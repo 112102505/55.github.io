@@ -14,7 +14,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: #400;
+            background: #000;
             /* Default background in case image doesn't load */
         }
 
@@ -155,9 +155,9 @@
     var conversationHistory = [];
 
     var apiKey = prompt("Please enter your API key:", "");
-    
+    var userName = prompt("Please enter your name:", "");
 
-    if (!apiKey) {
+    if (!apiKey || !userName) {
         alert("API key and name are required to use the chatroom.");
         // Optionally, redirect or disable form
     } else {
@@ -225,7 +225,6 @@
     function displayMessage(message, sender) {
         var messageElement = document.createElement('div');
         var formatMessage = formatText(message);
-        messageElement.innerHTML = formatText(message);
         messageElement.classList.add('message');
         if (sender === 'user') {
             messageElement.classList.add('userMessage');
@@ -310,47 +309,43 @@
                         ${userName}是一位即將要考學測的高三牲，試圖在巨大的考試壓力下平衡讀書和休閒的時間。遊戲通過${userName}的互動和選擇來探索${userName}的真正心聲。
 
                         主要角色：
-                        ${userName}：主角，高三學測牲。
-                        小天使：${userName}的讀書小精靈。
-                        小惡魔：${userName}的玩樂小精靈。
+                        ${userName}：主角，內向的大學新生。
+                        小天使：${userName}的善良心聲。
+                        小惡魔：${userName}的邪惡心聲。
                         遊戲腳本流程
 
                         開場：
-                        （場景：宿舍)
-                        選擇A：放棄讀書打LOL打一整夜。
-                        選擇B：在書桌前思考讀書的意義。
+                        （場景：書桌）
+                        ${userName}在思考要不要讀書。
+                        選擇A：走向遊戲機前打LOL。
+                        選擇B：走向書桌轉筆。
 
                         打LOL：
-                        （場景：打LOL）
-                        若選擇A，${userName} 不知不覺就打到凌晨一點，看遮自己發紅的眼睛思考到底要不要繼續打LOL。
-                        突然${userName} 內心的小惡魔出現了。
-                        小惡魔:反正都打一整個晚上的遊戲了，再打下去應該沒有關係吧? 明天再讀就好了啦!
-                         選擇A1：選擇繼續打LOL，打到清晨五點才去睡覺。 （選擇後進入學業合作劇情）
-                         選擇A2：選擇設早上六點的鬧鐘，然後去睡覺。（選擇後進入學業合作劇情）
+                        （場景：遊戲機前）
+                        若選擇A，${userName}打LOL打到凌晨一點。 小惡魔出現了。 小惡魔:反正都正麼晚了繼續打下去應該也不會怎樣吧?
+                         選擇A1：繼續打LOL打到清晨五點才去睡覺。\
+                         選擇A2：偶然照到鏡子，發現眼睛發紅趕緊去睡覺。
 
-                        若選擇B，${userName}在書桌上轉筆轉了十分鐘。突然${userName} 內心的小天使出現了。
-                        小天使:再不去讀書的話，之後便會陷入讀書讀不完的惡性循環哦!
-                         選擇B1：自動地拿出物理習題開始刷題，寫到凌晨一點才睡覺。（選擇後進入學業合作劇情）
-                         選擇B2：覺得小天使好煩，轉身去睡覺。（選擇後進入學業合作劇情）
+                        若選擇B，${userName}做到書桌前轉筆一直失敗。 小天使出現了。 小天使:現在開始讀書的話之後的壓力就不會那麼大了!
+                         選擇B1：拿起書本開始讀書，讀到十二點發現時間不晚了趕緊去睡覺。
+                         選擇B2：轉身向床走去，大睡一覺
 
-                        起床：
+                        七點鬧鐘響了：
                         （場景：被窩）
-                        ${userName}的鬧鐘響了。
-                        ${userName}的小天使和小惡魔同時出現。
-                        小天使:該起床了，趕快去讀書，現在開始讀一切都不晚!
-                        小惡魔:好累喔! 一天不讀書應該不會怎樣吧?反正考前再讀就好了
-                        選擇A：起床去讀書。（選擇後進入結局，根據玩家的選擇進行反思及回顧）
-                        選擇B：選擇繼續賴在床上，繼續睡覺。（選擇後進入結局，根據玩家的選擇進行反思及回顧）
+                        ${userName}鬧鐘好吵喔。
+                        ${userName}如果可以再多睡意點該有多好，不過今天一定要讀書...
+                        選擇A：用意志力逃離被窩，起床讀書
+                        選擇B：直接將手機丟掉窗戶外，繼續睡覺。
 
                         結局：
-                        開放表達結局：如果${userName}選擇在關鍵時刻做出去打LOL的抉擇（A1和A），${userName} 在學測中拿到42級分，${userName} 十分懊惱準備去考分科。
+                        開放表達結局：如果${userName}選擇在關鍵時刻擺爛（A1和A），${userName} 將在學測考取36級分的爛成績。
 
-                        壓抑感受結局：如果${userName}選擇去讀書的抉擇（A2和B），${userName} 在學測中拿到60級分，${userName} 終於不用再讀高中的知識。
+                        壓抑感受結局：如果${userName}選擇好好讀書（A2和B），${userName} 將在學測考取58級分的成績。
 
                         遊戲結尾
-                        遊戲最後將根據${userName}的選擇提供一段反思，強調選擇的重要性。"""
+                        遊戲最後將根據${userName}的選擇提供一段反思，強調讀書的重要性，以及擺爛的方式並不會提升自身的成績。"""
 
-                        請根據腳本中的對話，根據"""開場"""到"""晚上的抉擇"""最後到"""被窩的抉擇"""進行，開始一個文字冒險遊戲，每一次的對話，都需要呈現以下格式與資訊：
+                        請根據腳本中的對話，根據"""開場"""到"""晚上思考到底要不要讀書"""最後到"""最後一課到底要不要起床讀書"""進行，開始一個文字冒險遊戲，每一次的對話，都需要呈現以下格式與資訊：
                         <場景>：目前故事的背景為何
                         <選擇>：在每一次的對話中，你都會根據腳本給我可以選擇的動作，根據我選擇的動作繼續接下來的劇情，整體劇情會圍繞腳本發展。
 
